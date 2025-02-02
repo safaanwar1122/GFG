@@ -7,7 +7,7 @@ public:
         {mid=start+(end-start/2);
             if(citations[mid]>=n-mid)
             {
-                end=mid-1;;
+                end=mid-1;
             }
            
             else {
@@ -18,3 +18,14 @@ public:
         return n-start;
     }
 };
+
+/* Why move left when citations[mid] >= n - mid?
+If citations[mid] >= n - mid, this means:
+
+1.We have found mid where citations[mid] is at least n - mid.
+2.There might be a better (higher) h-index in the left half, 
+so we move left (end = mid - 1).
+3Q.Why return n - start?
+ANS: When the binary search ends, start is at the smallest mid index 
+where citations[mid] >= n - mid. The correct h-index is then:
+h=n−start.*/
